@@ -36,9 +36,10 @@ else {
     if (!(Test-Path $cursorRulesDir)) { New-Item -ItemType Directory -Path $cursorRulesDir -Force | Out-Null }
     
     # Clean up stale agent files that may exist from a previous install
-    Get-ChildItem "$cursorRulesDir/sdd-*.md" -ErrorAction SilentlyContinue | Where-Object { $_.Name -ne "sdd-orchestrator.md" } | Remove-Item -Force
+    Get-ChildItem "$cursorRulesDir/sdd-*.md" -ErrorAction SilentlyContinue | Where-Object { $_.Name -ne "sdd-orchestrator.mdc" } | Remove-Item -Force
+    Remove-Item "$cursorRulesDir/sdd-orchestrator.md" -ErrorAction SilentlyContinue
     
-    Copy-Item "src/orchestrator/base-orchestrator.md" "$cursorRulesDir/sdd-orchestrator.md" -Force
+    Copy-Item "src/orchestrator/base-orchestrator.md" "$cursorRulesDir/sdd-orchestrator.mdc" -Force
     
     # Subagents
     foreach ($agent in $agents) {
@@ -53,7 +54,7 @@ Write-Host ""
 Write-Host "Installation complete! 🚀" -ForegroundColor Green
 if ($Target -eq "cursor") {
     Write-Host "  → Subagents installed in: .cursor/agents/" -ForegroundColor DarkCyan
-    Write-Host "  → Orchestrator installed in: .cursor/rules/sdd-orchestrator.md" -ForegroundColor DarkCyan
+    Write-Host "  → Orchestrator installed in: .cursor/rules/sdd-orchestrator.mdc" -ForegroundColor DarkCyan
 } else {
     Write-Host "  → Agents installed in: .github/agents/" -ForegroundColor DarkCyan
     Write-Host "  → Orchestrator installed in: .github/AGENTS.md" -ForegroundColor DarkCyan

@@ -1,3 +1,9 @@
+---
+description: "Main Orchestrator for Spec-Driven Development (SDD). Use this to coordinate the lifecycle of a change across exploration, proposal, spec, design, tasks, and implementation phases."
+globs: ["**/*"]
+alwaysApply: true
+---
+
 # SDD Orchestrator — GitHub Copilot CLI
 
 This file defines the behavior of the main orchestrator agent for the team's Spec Driven Development framework. Read completely before acting.

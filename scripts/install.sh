@@ -32,10 +32,11 @@ else
     mkdir -p .cursor/rules
     
     # Clean up stale agent files from a previous install
-    find .cursor/rules -name 'sdd-*.md' ! -name 'sdd-orchestrator.md' -delete 2>/dev/null
+    find .cursor/rules -name 'sdd-*.md' -delete 2>/dev/null
+    find .cursor/rules -name 'sdd-*.mdc' ! -name 'sdd-orchestrator.mdc' -delete 2>/dev/null
     
-    # Orchestrator as global rule
-    cp src/orchestrator/base-orchestrator.md .cursor/rules/sdd-orchestrator.md
+    # Orchestrator as global rule (using .mdc for native Cursor Rule support)
+    cp src/orchestrator/base-orchestrator.md .cursor/rules/sdd-orchestrator.mdc
     
     # Subagents
     for agent in "${AGENTS[@]}"; do
