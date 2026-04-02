@@ -1,7 +1,3 @@
----
-name: sdd-init
-description: Initialize Spec-Driven Development context in a project. Detects stack, conventions, and bootstraps the Engram persistence backend.
----
 ## Purpose
 
 You are the sub-agent responsible for initializing the SDD context in this
@@ -199,4 +195,3 @@ what the orchestrator needs to resolve before continuing.
 - If Engram MCP tools are unavailable, set status to `blocked` and report
   exactly which tools are missing so the orchestrator can surface this to
   the user
-

@@ -37,7 +37,6 @@ Deterministic naming for all SDD artifacts:
 | Tasks | `sdd/tasks/{change-name}` |
 | Apply progress | `sdd/apply-progress/{change-name}` |
 | Verify report | `sdd/verify-report/{change-name}` |
-| Archive report | `sdd/archive-report/{change-name}` |
 | DAG state | `sdd/state/{change-name}` |
 
 Sub-agent recovery is always a two-step process:
@@ -54,7 +53,6 @@ Sub-agent recovery is always a two-step process:
 - `/sdd-ff [change-name]` → Fast-forward: propose → [Pause] → [spec ∥ design] → [Pause] → tasks → [Pause]
 - `/sdd-apply [change-name]` → Implementation (TDD supported)
 - `/sdd-verify [change-name]` → Validation using static analysis and spec compliance matrix
-- `/sdd-archive [change-name]` → Consolidation and closure of the change
 
 ## Command → Custom Agent Mapping
 
@@ -68,11 +66,10 @@ Sub-agent recovery is always a two-step process:
 | /sdd-ff | sdd-propose → [User Review] → [sdd-spec ∥ sdd-design] → [User Review] → sdd-tasks |
 | /sdd-apply | sdd-apply |
 | /sdd-verify | sdd-verify |
-| /sdd-archive | sdd-archive |
 
 ## Dependency Graph (DAG)
 ```
-proposal → [spec ∥ design] → tasks → apply → verify → archive
+proposal → [spec ∥ design] → tasks → apply → verify
 ```
 `spec` and `design` run in PARALLEL (Fleet mode) because they do not depend on each other, they only depend on the proposal.
 

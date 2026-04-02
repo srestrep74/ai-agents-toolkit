@@ -1,0 +1,4 @@
+---
+name: sdd-init
+description: Initialize Spec-Driven Development context in a project. Detects stack, conventions, and bootstraps the Engram persistence backend.
+---

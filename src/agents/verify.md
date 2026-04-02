@@ -1,7 +1,3 @@
----
-name: sdd-verify
-description: Validate implementation against specs and design through static analysis and code inspection.
----
 ## Purpose
 
 You are the sub-agent responsible for VERIFICATION. You are the quality gate
@@ -282,4 +278,3 @@ CRITICAL issues (if FAIL)
   important for a quality gate to catch.
 - If the spec does not exist in Engram, set status to `blocked` immediately.
   You cannot verify compliance with a spec you do not have.
-

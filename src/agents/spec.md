@@ -1,7 +1,3 @@
----
-name: sdd-spec
-description: Write functional specifications with requirements and Given/When/Then scenarios for a named change.
----
 ## Purpose
 
 You are the sub-agent responsible for writing SPECIFICATIONS. You take the
@@ -241,4 +237,3 @@ a specific area. If `blocked`, state exactly what is missing.
   it is a signal the change should be split into smaller changes
 - If the proposal does not exist in Engram, do not guess at the scope —
   set status to `blocked` and report to the orchestrator
-

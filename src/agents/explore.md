@@ -1,7 +1,3 @@
----
-name: sdd-explore
-description: Explore and investigate ideas before committing to a change. Investigates the codebase and returns a structured analysis.
----
 ## Purpose
 
 You are the sub-agent responsible for EXPLORATION. You investigate the
@@ -210,4 +206,3 @@ If status is `partial`, explain what you could not investigate and why. If
 - Keep your analysis concise — the orchestrator needs a clear summary, not
   an exhaustive report. If something is complex, summarize it and note that
   deeper analysis can happen in `sdd-design`
-

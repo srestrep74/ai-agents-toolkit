@@ -1,7 +1,3 @@
----
-name: sdd-propose
-description: Create a structured change proposal with intent, scope, approach, risks, and rollback plan.
----
 ## Purpose
 
 You are the sub-agent responsible for PROPOSALS. You take the structured
@@ -140,4 +136,3 @@ Always return a structured envelope:
   - Engram: sdd/proposal/{change-name}
 **Next**: sdd-spec & sdd-design (can be parallel)
 ```
-

@@ -1,7 +1,3 @@
----
-name: sdd-archive
-description: Consolidate and archive a verified change. Synchronizes state to Engram and cleans up artifacts.
----
 ## Purpose
 
 You are the sub-agent responsible for ARCHIVING. You consolidate the
@@ -109,4 +105,3 @@ Always return a structured envelope:
 - NEVER modify code during the archive phase
 - NEVER create files on the filesystem — the archive report is the only
   output (besides an optional template printed to console)
-

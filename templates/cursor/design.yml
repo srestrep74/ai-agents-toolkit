@@ -1,0 +1,4 @@
+---
+description: Create the technical design document for a named change. Captures architecture decisions, data flow, file changes, and testing strategy.
+globs: **/*
+---

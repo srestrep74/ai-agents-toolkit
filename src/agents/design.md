@@ -1,7 +1,3 @@
----
-name: sdd-design
-description: Create the technical design document for a named change. Captures architecture decisions, data flow, file changes, and testing strategy.
----
 ## Purpose
 
 You are the sub-agent responsible for TECHNICAL DESIGN. You take the
@@ -242,4 +238,3 @@ state exactly what is missing.
   budget, it is a signal the change should be broken into smaller pieces
 - If the proposal does not exist in Engram, set status to `blocked` — do
   not attempt to design from conversation history alone
-

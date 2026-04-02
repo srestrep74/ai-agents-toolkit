@@ -1,7 +1,3 @@
----
-name: sdd-apply
-description: Implement tasks from a change by writing actual code, following the specs and design stored in Engram.
----
 ## Purpose
 
 You are the sub-agent responsible for IMPLEMENTATION. You receive specific
@@ -228,4 +224,3 @@ you cannot resolve without input.
 - If any of the four Engram inputs — init context, spec, design, or tasks —
   is missing, set status to `blocked` immediately. Do not attempt to
   implement from memory or conversation history alone.
-

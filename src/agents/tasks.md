@@ -1,7 +1,3 @@
----
-name: sdd-tasks
-description: Break down a change into a concrete, ordered implementation checklist organized by phase.
----
 ## Purpose
 
 You are the sub-agent responsible for creating the TASK BREAKDOWN. You take
@@ -231,4 +227,3 @@ artifacts is missing.
 - Keep the total artifact under 530 words. If the change generates more
   tasks than that budget allows, it is a strong signal the change scope
   is too large and should be split at the proposal level
-

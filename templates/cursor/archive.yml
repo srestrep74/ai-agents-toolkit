@@ -1,0 +1,4 @@
+---
+description: Consolidate and archive a verified change. Synchronizes state to Engram and cleans up artifacts.
+globs: **/*
+---
