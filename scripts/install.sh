@@ -30,8 +30,13 @@ else
     # Cursor uses .cursor/agents/ for native subagents (NOT .cursor/rules/)
     mkdir -p .cursor/agents
     mkdir -p .cursor/rules
+    
+    # Clean up stale agent files from a previous install
+    find .cursor/rules -name 'sdd-*.md' ! -name 'sdd-orchestrator.md' -delete 2>/dev/null
+    
     # Orchestrator as global rule
     cp src/orchestrator/base-orchestrator.md .cursor/rules/sdd-orchestrator.md
+    
     # Subagents
     for agent in "${AGENTS[@]}"; do
         { cat "templates/cursor/$agent.yml"; echo; cat "src/agents/$agent.md"; } > ".cursor/agents/sdd-$agent.md"

@@ -31,9 +31,13 @@ else {
     $agentDir = ".cursor/agents"
     if (!(Test-Path $agentDir)) { New-Item -ItemType Directory -Path $agentDir -Force | Out-Null }
     
-    # Orchestrator as global rules
+    # Orchestrator as a global rule
     $cursorRulesDir = ".cursor/rules"
     if (!(Test-Path $cursorRulesDir)) { New-Item -ItemType Directory -Path $cursorRulesDir -Force | Out-Null }
+    
+    # Clean up stale agent files that may exist from a previous install
+    Get-ChildItem "$cursorRulesDir/sdd-*.md" -ErrorAction SilentlyContinue | Where-Object { $_.Name -ne "sdd-orchestrator.md" } | Remove-Item -Force
+    
     Copy-Item "src/orchestrator/base-orchestrator.md" "$cursorRulesDir/sdd-orchestrator.md" -Force
     
     # Subagents
