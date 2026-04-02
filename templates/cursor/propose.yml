@@ -1,4 +1,6 @@
 ---
-description: Create a structured change proposal with intent, scope, approach, risks, and rollback plan.
-globs: **/*
+name: sdd-propose
+description: "Use when the user runs /sdd-new or /sdd-continue and an exploration artifact already exists in Engram. Generates a technical proposal with a Requirement Traceability Matrix mapped 1:1 to the User Story."
+model: inherit
+readonly: true
 ---

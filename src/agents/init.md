@@ -94,6 +94,7 @@ over user-level):
 **Project-level** (repo-specific):
 
 - `.github/agents/`
+- `.cursor/rules/`
 
 Skip any entry named `sdd-init`, `_shared`, or `skill-registry` itself to
 avoid self-referential loops. For each skill or agent found, read its

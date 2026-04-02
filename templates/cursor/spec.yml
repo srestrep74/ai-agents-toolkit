@@ -1,4 +1,6 @@
 ---
-description: Write functional specifications with requirements and Given/When/Then scenarios for a named change.
-globs: **/*
+name: sdd-spec
+description: "Use when the user runs /sdd-ff or /sdd-continue and a proposal exists in Engram. Writes the functional specification with Given/When/Then scenarios defining WHAT the system must do."
+model: inherit
+readonly: true
 ---

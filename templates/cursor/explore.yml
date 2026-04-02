@@ -1,4 +1,6 @@
 ---
-description: Explore and investigate ideas before committing to a change. Investigates the codebase and returns a structured analysis.
-globs: **/*
+name: sdd-explore
+description: "Use when the user runs /sdd-explore or /sdd-new, or wants to investigate how a User Story flows through the codebase. Always use for deep tracing across API, Domain, and Infrastructure layers before any change is proposed."
+model: inherit
+readonly: true
 ---

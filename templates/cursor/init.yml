@@ -1,4 +1,6 @@
 ---
-description: Initialize Spec-Driven Development context in a project. Detects stack, conventions, and bootstraps the Engram persistence backend.
-globs: **/*
+name: sdd-init
+description: "Use when the user says 'sdd init', 'iniciar sdd', or wants to initialize the SDD context for a project. Detects the tech stack, conventions, and bootstraps the Engram persistence backend."
+model: inherit
+readonly: false
 ---

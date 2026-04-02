@@ -1,4 +1,6 @@
 ---
-description: Implement tasks from a change by writing actual code, following the specs and design stored in Engram.
-globs: **/*
+name: sdd-apply
+description: "Use when the user runs /sdd-apply or asks to implement the tasks. Writes actual code following the spec and design stored in Engram. Supports both TDD and standard workflows."
+model: inherit
+readonly: false
 ---

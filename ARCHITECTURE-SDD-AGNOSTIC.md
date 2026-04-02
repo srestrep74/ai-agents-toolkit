@@ -21,10 +21,10 @@ sdd-framework/
 │       ├── apply.md                  # Core implementation prompts
 │       └── verify.md                 # Core verification prompts
 ├── templates/
-│   ├── copilot/                      # Metadata for Copilot
-│   │   ├── [agent].yml
-│   └── cursor/                       # Metadata for Cursor
-│       ├── [agent].yml
+│   ├── copilot/                      # Copilot YAML headers (name + description)
+│   │   └── [agent].yml
+│   └── cursor/                       # Cursor YAML headers (name + description + model + readonly)
+│       └── [agent].yml
 └── scripts/
     ├── install.sh                    # Linux/Mac Installer
     └── install.ps1                   # Windows Installer
@@ -32,49 +32,85 @@ sdd-framework/
 
 ---
 
-## 🛠️ Agent Specific Mappings
+## 🛠️ Agent-Specific Mappings
 
-### 1. GitHub Copilot CLI (Extension)
-- **Installation Path**: `.github/agents/`
-- **Orchestrator Path**: `.github/AGENTS.md`
-- **File Format**: `sdd-[name].agent.md`
-- **Metadata Required**:
-  ```yaml
-  ---
-  name: sdd-[name]
-  description: ...
-  ---
-  ```
+### 1. GitHub Copilot CLI
 
-### 2. Cursor (Native Rules)
-- **Installation Path**: `.cursor/rules/`
-- **Orchestrator Path**: `.cursorrules`
-- **File Format**: `sdd-[name].md`
-- **Metadata Required**:
-  ```yaml
-  ---
-  description: ...
-  globs: **/*
-  ---
-  ```
+| Item | Location |
+| :--- | :--- |
+| **Orchestrator** | `.github/AGENTS.md` |
+| **Sub-agents** | `.github/agents/sdd-[name].agent.md` |
+| **YAML Schema** | `name`, `description` |
+
+```yaml
+---
+name: sdd-explore
+description: Deep Trace of the entire functional flow...
+---
+```
+
+### 2. Cursor (Native Subagents)
+
+> [!IMPORTANT]
+> Cursor sub-agents go in **`.cursor/agents/`**, NOT `.cursor/rules/`. The `/rules/` folder is for passive, always-on style rules (like linting conventions). **Subagents** require `.cursor/agents/` to run with isolated context and full autonomy.
+
+| Item | Location |
+| :--- | :--- |
+| **Orchestrator** | `.cursor/rules/sdd-orchestrator.md` |
+| **Sub-agents** | `.cursor/agents/sdd-[name].md` |
+| **YAML Schema** | `name`, `description`, `model`, `readonly` |
+
+```yaml
+---
+name: sdd-explore
+description: "Use when the user runs /sdd-explore. Always use for deep tracing..."
+model: inherit
+readonly: true
+---
+```
+
+Key Cursor-specific YAML fields:
+
+| Field | Options | Usage in SDD |
+| :--- | :--- | :--- |
+| `model` | `inherit`, `fast`, or model ID | `fast` for `tasks`; `inherit` for all others |
+| `readonly` | `true` / `false` | `true` for all phases except `init` and `apply` |
+| `is_background` | `true` / `false` | Can be `true` for parallel `spec` + `design` |
 
 ---
 
-## ⚡ Installation Logic (`install.sh` / `install.ps1`)
+## ⚡ How Cursor Auto-Delegation Works
 
-The script is responsible for injecting the agent-specific headers. The flow is as follows:
+When the Orchestrator runs, it reads the `description` of all files in `.cursor/agents/`. If the description contains trigger phrases like *"Use when the user runs /sdd-explore"*, Cursor will **automatically invoke** that sub-agent without manual intervention.
 
-1.  **Target Selection**: User specifies `copilot` or `cursor`.
-2.  **File Processing**:
-    - **For Copilot**: Iterates through `src/agents/*.md`, prepends the Copilot YAML header, renames to `sdd-[name].agent.md`, and copies it to `.github/agents/`.
-    - **For Cursor**: Iterates through `src/agents/*.md`, prepends the Cursor YAML header (including `globs`), renames to `sdd-[name].md`, and copies it to `.cursor/rules/`.
-3.  **Orchestrator Setup**:
-    - Copies `base-orchestrator.md` to the appropriate destination (`.github/AGENTS.md` or `.cursorrules`).
+The sub-agent runs with an **empty, isolated context window** — it receives only what the parent passes in. When done, it returns its result to the Orchestrator automatically.
+
+---
+
+## ⚡ Installation Logic
+
+Run the script to deploy the full agent suite to your project.
+
+**Windows:**
+```powershell
+.\scripts\install.ps1 -Target copilot   # Or: -Target cursor
+```
+
+**Linux/Mac:**
+```bash
+./scripts/install.sh copilot            # Or: cursor
+```
+
+The script:
+1. Prepends the tool-specific YAML header to each `src/agents/*.md` source file.
+2. Copies the assembled file to the correct target directory.
+3. Copies the orchestrator to its tool-specific entry point.
 
 ---
 
 ## ✅ Benefits of the Agnostic Approach
 
-1.  **Single Source of Truth**: If you improve a prompt in any phase, you only change it in `src/agents/` once.
-2.  **Portability**: Use the same framework in the terminal (Copilot CLI) for fast workflows and in the IDE (Cursor) for intensive coding sessions.
-3.  **Modularity**: Makes it easy to add support for new agents (like Windsurf or Trae) simply by adding a new metadata template.
+1.  **Single Source of Truth**: Improve a prompt in `src/agents/` once — run the installer to propagate everywhere.
+2.  **Portability**: Same framework on the terminal (Copilot CLI) and in the IDE (Cursor).
+3.  **Real Subagent Isolation**: In Cursor, each SDD phase runs with its own context window via the native `.cursor/agents/` mechanism.
+4.  **Modularity**: Add support for new tools (Windsurf, Trae, etc.) by adding a new template folder.

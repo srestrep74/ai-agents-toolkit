@@ -107,6 +107,7 @@ To install or sync the agents in your current project, run the installer from th
 ## 💡 Best Practices
 
 - **The US is the Manifesto**: Always provide the User Story as context in Step 1. The agents are instructed to treat it as the ultimate truth.
+- **Rules/Skills Deployment**: In Cursor, both agents and specialized skills go into `.cursor/rules/`. Each file acts as a reusable behavior that can be invoked via @-mentions.
 - **Feedback Loops**: If a proposal is wrong, don't ignore it. Give feedback: *"Re-propose without changing the SOAP schema"*.
 - **Model Tiers**:
   - **Plan/Explore/Propose**: Use **Claude 3.5 Sonnet / Gemini 1.5 Pro**.

@@ -1,4 +1,6 @@
 ---
-description: Create the technical design document for a named change. Captures architecture decisions, data flow, file changes, and testing strategy.
-globs: **/*
+name: sdd-design
+description: "Use when the user runs /sdd-ff or /sdd-continue and a proposal exists in Engram. Writes the technical design covering architecture decisions, data flow, file changes, and interfaces. Often runs in parallel with sdd-spec."
+model: inherit
+readonly: true
 ---

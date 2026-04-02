@@ -1,4 +1,6 @@
 ---
-description: Validate implementation against specs and design through static analysis and code inspection.
-globs: **/*
+name: sdd-verify
+description: "Use when the user runs /sdd-verify or asks to validate the implementation. Proactively use after sdd-apply completes. Performs deep static analysis and produces a spec compliance matrix. Does NOT fix issues — only reports."
+model: inherit
+readonly: true
 ---
