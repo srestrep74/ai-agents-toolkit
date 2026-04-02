@@ -1,0 +1,32 @@
+Hola, estoy dieñando un sistema de skills para mi equipo para que seamos un equip de alto rendimeinto. 
+
+Para eso , nos estamos apalancando en GITHUB COPILOT CLI , y he diseñado por ahora al 100% una skill que dado dos clusters de ECS, el service (microservicio) me da un reporte de las envVars diferentes. 
+
+Lo puedes ver por aca @beautifulMention . 
+
+Cada Skill tiene : 
+
+- SKILL.md : Descripcion detallada del SKILL. 
+- scripts/ : directorio donde va codigo que explica como ejecutar 
+- examples/ : ejemplos de resultados esperados que el agente debe replicar para dar la respuesta. 
+
+Ahora , estoy haciendo una nueva skill de pr-reviewer . Nuestros codigos estan en Azure Devops, pero como estamos usando Copilot CLI, configure el azure-devops MCP para que este lo pueda usar y acceder a lo que se necesita para revisar al PR. 
+
+Esta Skill se encuentra  en @beautifulMention . Pero esta skill como esta funcionando actualmente no me gusta. 
+
+Por ello, necesito tu ayuda para poder cambiarla y hacerla funcoinar mejor. La idea es que todo sea usado mediante las tasks que provee el MCP de Azure que por aca las liste : @beautifulMention.
+
+Ademas, necsito que la SKILL quede mejor especificada , y use el formato PRO que usamos en la SKILL de comparar envVars. @beautifulMention
+
+Necesito todo sea en ingles, bien defniido, claro , concreto, sin emojis. Lo que necesito haga el agente por ahora sea :
+
+- Consultar el PR
+- MIrar el work item asociado (descriptcion , criterios de aceptacion y comentarios)
+- Comprender el work item funcionalmente que pide .
+- Comparar los cambios que se quieren hacer merge. Es decir, tomar los  de la rama dev (que e sla rama main) y el de la rama donde se esta haciendo el PR, y verififcar que funcionalmente si cumpla 100% con lo que dice la US . 
+- No importa el estado del PR (CERRADO, COMPLETADO, ACTIVO), siempre que le pida usar esa skill,, no debe omitir cosas. 
+- Me debe de dar el reporte por al consola de lo encontrado: si si cumple 100% con la US, en los cambios de codigo indicar que se puede cambiar (dado por optimizacion , mejores practicas, mejor codigo, o no cumple funcionalmente , detectar BUgs, etc) . 
+
+Me entiendes ? 
+
+
