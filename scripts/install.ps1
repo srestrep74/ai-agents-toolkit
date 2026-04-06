@@ -19,8 +19,8 @@ if ($Target -eq "copilot") {
     $agentDir = "$copilotDir/agents"
     if (!(Test-Path $agentDir)) { New-Item -ItemType Directory -Path $agentDir -Force | Out-Null }
     
-    # Orchestrator
-    Copy-Item "src/orchestrator/base-orchestrator.md" "$copilotDir/AGENTS.md" -Force
+    # Orchestrator (Copilot instructions)
+    Copy-Item "src/orchestrator/base-orchestrator.md" ".copilot-instructions.md" -Force
     
     # Agents
     foreach ($agent in $agents) {
@@ -76,7 +76,10 @@ else {
 
 # --- 2. Python venv setup for skills ---
 if (Test-Path "scripts/setup-venv.ps1") {
-    & "powershell" -ExecutionPolicy Bypass -File "scripts/setup-venv.ps1"
+    $copilotDir = ".copilot"
+    if (!(Test-Path $copilotDir)) { New-Item -ItemType Directory -Path $copilotDir -Force | Out-Null }
+    $targetVenv = Join-Path $copilotDir ".venv"
+    & "powershell" -ExecutionPolicy Bypass -File "scripts/setup-venv.ps1" -VenvDir $targetVenv
 }
 
 # --- 3. Engram Installation ---
@@ -142,11 +145,11 @@ if ($Target -eq "cursor") {
     Set-Content -Path $mcpFile -Value $jsonConfig -Force
     Write-Host "  → Cursor MCP configured in: $mcpFile" -ForegroundColor DarkCyan
 } else {
-    $copilotDir = ".copilot"
-    if (!(Test-Path $copilotDir)) { New-Item -ItemType Directory -Path $copilotDir -Force | Out-Null }
-    $mcpFile = Join-Path $copilotDir "mcp-config.json"
+    $globalCopilotDir = Join-Path $HOME ".copilot"
+    if (!(Test-Path $globalCopilotDir)) { New-Item -ItemType Directory -Path $globalCopilotDir -Force | Out-Null }
+    $mcpFile = Join-Path $globalCopilotDir "mcp-config.json"
     Set-Content -Path $mcpFile -Value $jsonConfig -Force
-    Write-Host "  → Copilot MCP configured in: $mcpFile" -ForegroundColor DarkCyan
+    Write-Host "  → Copilot MCP configured globally in: $mcpFile" -ForegroundColor DarkCyan
 }
 
 Write-Host ""
@@ -158,6 +161,6 @@ if ($Target -eq "cursor") {
 }
 else {
     Write-Host "  → Agents installed in: .copilot/agents/" -ForegroundColor DarkCyan
-    Write-Host "  → Orchestrator installed in: .copilot/AGENTS.md" -ForegroundColor DarkCyan
+    Write-Host "  → Orchestrator installed in: .copilot-instructions.md" -ForegroundColor DarkCyan
     Write-Host "  → Skills deployed to: .copilot/skills/" -ForegroundColor DarkCyan
 }

@@ -18,7 +18,7 @@ if [ "$TARGET" == "copilot" ]; then
     COPILOT_DIR=".copilot"
     mkdir -p "$COPILOT_DIR/agents"
     # Orchestrator
-    cp src/orchestrator/base-orchestrator.md "$COPILOT_DIR/AGENTS.md"
+    cp src/orchestrator/base-orchestrator.md .copilot-instructions.md
     # Agents
     for agent in "${AGENTS[@]}"; do
         { cat "templates/copilot/$agent.yml"; echo; cat "src/agents/$agent.md"; } > "$COPILOT_DIR/agents/sdd-$agent.agent.md"
@@ -51,7 +51,8 @@ fi
 # --- 2. Python venv setup for skills ---
 SKILLS_DIR="src/skills"
 if [ -f "$SKILLS_DIR/pyproject.toml" ]; then
-    VENV_DIR=".venv"
+    VENV_DIR=".copilot/.venv"
+    mkdir -p ".copilot"
     if [ ! -d "$VENV_DIR" ]; then
         echo ""
         echo "📦 Creating Python venv for skills..."
@@ -129,9 +130,10 @@ if [ "$TARGET" == "cursor" ]; then
     echo "$MCP_JSON" > .cursor/mcp.json
     echo "  → Cursor MCP configured in: .cursor/mcp.json"
 else
-    mkdir -p .copilot
-    echo "$MCP_JSON" > .copilot/mcp-config.json
-    echo "  → Copilot MCP configured in: .copilot/mcp-config.json"
+    GLOBAL_COPILOT_DIR="$HOME/.copilot"
+    mkdir -p "$GLOBAL_COPILOT_DIR"
+    echo "$MCP_JSON" > "$GLOBAL_COPILOT_DIR/mcp-config.json"
+    echo "  → Copilot MCP configured globally in: $GLOBAL_COPILOT_DIR/mcp-config.json"
 fi
 
 echo ""
@@ -142,6 +144,6 @@ if [ "$TARGET" == "cursor" ]; then
     echo "  → Skills synced to: .cursor/skills/"
 else
     echo "  → Agents installed in: .copilot/agents/"
-    echo "  → Orchestrator installed in: .copilot/AGENTS.md"
+    echo "  → Orchestrator installed in: .copilot-instructions.md"
     echo "  → Skills deployed to: .copilot/skills/"
 fi

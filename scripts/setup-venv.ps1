@@ -1,4 +1,7 @@
 # scripts/setup-venv.ps1
+param (
+    [string]$VenvDir = ".venv"
+)
 # Automates Python venv creation and dependency installation for SDD skills.
 
 $skillsDir = "src/skills"
@@ -9,7 +12,7 @@ if (!(Test-Path $pyProject)) {
     exit 0
 }
 
-$venvDir = ".venv"
+# $venvDir is now a parameter
 if (!(Test-Path $venvDir)) {
     Write-Host "Creating Python venv for skills..."
     python -m venv $venvDir
