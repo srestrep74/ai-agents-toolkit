@@ -1,6 +1,6 @@
 ---
 name: sdd-apply
-description: "Use when the user runs /sdd-apply or asks to implement the tasks. Writes actual code following the spec and design stored in Engram. Supports both TDD and standard workflows."
+description: "Use when the user runs /sdd-apply, @sdd-apply, or explicitly asks to implement, code, or apply tasks. This agent writes the actual code following the Spec and Design stored in Engram."
 model: inherit
 readonly: false
 ---
