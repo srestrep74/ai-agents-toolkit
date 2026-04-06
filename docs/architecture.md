@@ -15,6 +15,7 @@ In a traditional AI interaction, a single agent is asked to do everything: explo
 SDD solves this by splitting the workload among specialized entities:
 1.  **The Orchestrator**: A lightweight agent that acts as an "Air Traffic Controller". Its context window stays clean because it **never reads code** or executes tasks directly. It only routes metadata and manages the high-level workflow.
 2.  **Specialized Sub-Agents**: When a task is needed (e.g., `sdd-explore`), a sub-agent is launched with a **fresh, independent context window**. It focuses 100% on its specific mission, executes it with high reasoning density, and then shuts down.
+3.  **Extensible Skills**: The framework is easily extended with specialized capabilities. Developers can create [Custom Skills](skills-guide.md) to handle specific technical tasks or team standards.
 
 ## 🏛️ The SDD Lifecycle
 

@@ -21,6 +21,7 @@ By using this framework, you ensure that every line of code is traceable to a re
 - [**Installation Guide**](docs/installation.md): How to set up the framework, Python environment, and Engram MCP.
 - [**Architecture & Sub-Agents**](docs/architecture.md): Deep dive into the SDD methodology and the role of each agent.
 - [**User Workflow**](docs/workflow.md): How to start a change, coordinate the lifecycle, and interact with the orchestrator.
+- [**Developer Skills Guide**](docs/skills-guide.md): How to create and integrate new specialized skills into the framework.
 
 ## 🛠️ Quick Start
 
