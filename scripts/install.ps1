@@ -13,14 +13,14 @@ $agents = @("init", "explore", "propose", "spec", "design", "tasks", "apply", "v
 
 # --- 1. Framework Components ---
 if ($Target -eq "copilot") {
-    $copilotDir = ".copilot"
+    $copilotDir = ".github"
     if (!(Test-Path $copilotDir)) { New-Item -ItemType Directory -Path $copilotDir -Force | Out-Null }
     
     $agentDir = "$copilotDir/agents"
     if (!(Test-Path $agentDir)) { New-Item -ItemType Directory -Path $agentDir -Force | Out-Null }
     
     # Orchestrator (Copilot instructions)
-    Copy-Item "src/orchestrator/base-orchestrator.md" ".copilot-instructions.md" -Force
+    Copy-Item "src/orchestrator/base-orchestrator.md" ".github/copilot-instructions.md" -Force
     
     # Agents
     foreach ($agent in $agents) {
@@ -76,7 +76,7 @@ else {
 
 # --- 2. Python venv setup for skills ---
 if (Test-Path "scripts/setup-venv.ps1") {
-    $copilotDir = ".copilot"
+    $copilotDir = ".github"
     if (!(Test-Path $copilotDir)) { New-Item -ItemType Directory -Path $copilotDir -Force | Out-Null }
     $targetVenv = Join-Path $copilotDir ".venv"
     & "powershell" -ExecutionPolicy Bypass -File "scripts/setup-venv.ps1" -VenvDir $targetVenv
@@ -160,7 +160,7 @@ if ($Target -eq "cursor") {
     Write-Host "  → Skills synced to: .cursor/skills/" -ForegroundColor DarkCyan
 }
 else {
-    Write-Host "  → Agents installed in: .copilot/agents/" -ForegroundColor DarkCyan
-    Write-Host "  → Orchestrator installed in: .copilot-instructions.md" -ForegroundColor DarkCyan
-    Write-Host "  → Skills deployed to: .copilot/skills/" -ForegroundColor DarkCyan
+    Write-Host "  → Agents installed in: .github/agents/" -ForegroundColor DarkCyan
+    Write-Host "  → Orchestrator installed in: .github/copilot-instructions.md" -ForegroundColor DarkCyan
+    Write-Host "  → Skills deployed to: .github/skills/" -ForegroundColor DarkCyan
 }

@@ -15,10 +15,10 @@ AGENTS=("init" "explore" "propose" "spec" "design" "tasks" "apply" "verify")
 
 # --- 1. Framework Components ---
 if [ "$TARGET" == "copilot" ]; then
-    COPILOT_DIR=".copilot"
+    COPILOT_DIR=".github"
     mkdir -p "$COPILOT_DIR/agents"
     # Orchestrator
-    cp src/orchestrator/base-orchestrator.md .copilot-instructions.md
+    cp src/orchestrator/base-orchestrator.md .github/copilot-instructions.md
     # Agents
     for agent in "${AGENTS[@]}"; do
         { cat "templates/copilot/$agent.yml"; echo; cat "src/agents/$agent.md"; } > "$COPILOT_DIR/agents/sdd-$agent.agent.md"
@@ -51,8 +51,8 @@ fi
 # --- 2. Python venv setup for skills ---
 SKILLS_DIR="src/skills"
 if [ -f "$SKILLS_DIR/pyproject.toml" ]; then
-    VENV_DIR=".copilot/.venv"
-    mkdir -p ".copilot"
+    VENV_DIR=".github/.venv"
+    mkdir -p ".github"
     if [ ! -d "$VENV_DIR" ]; then
         echo ""
         echo "📦 Creating Python venv for skills..."
@@ -143,7 +143,7 @@ if [ "$TARGET" == "cursor" ]; then
     echo "  → Orchestrator installed in: .cursor/rules/sdd-orchestrator.mdc"
     echo "  → Skills synced to: .cursor/skills/"
 else
-    echo "  → Agents installed in: .copilot/agents/"
-    echo "  → Orchestrator installed in: .copilot-instructions.md"
-    echo "  → Skills deployed to: .copilot/skills/"
+    echo "  → Agents installed in: .github/agents/"
+    echo "  → Orchestrator installed in: .github/copilot-instructions.md"
+    echo "  → Skills deployed to: .github/skills/"
 fi

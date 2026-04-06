@@ -20,7 +20,7 @@ src/skills/
 ```
 
 ### Project-Specific Skills (Local)
-Located in your project's root `skills/` or `.cursor/skills/`.
+Located in your project's root `skills/`, `.cursor/skills/`, or `.github/skills/`.
 ```text
 {project-root}/
 └── skills/

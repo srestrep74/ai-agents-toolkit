@@ -1,9 +1,7 @@
-<!-- skill-metadata
+---
 name: aws-ecs-env-compare
 description: "Compare environment variables and deployed versions for a microservice across two ECS clusters."
-author: genai-skills-kit
-version: "2.0"
--->
+---
 
 # ☁️ AWS ECS Environment Compare
 

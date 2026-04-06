@@ -1,9 +1,7 @@
-<!-- skill-metadata
+---
 name: pr-reviewer
 description: "Senior Code Reviewer that audits Azure DevOps PRs based on linked Work Items and actual code changes."
-author: genai-skills-kit
-version: "2.0"
--->
+---
 
 # 🤖 PR Reviewer Skill
 
