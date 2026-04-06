@@ -1,9 +1,9 @@
 import json
 import sys
 
-from shared.aws.ecs.ecs_client import ECSClient
-from shared.aws.exceptions import AWSSkillError, AuthError
-from shared.aws.ecs.ecs_models import CompareResult, EnvVar, EnvVarMismatch, ServiceData
+from shared.ecs.ecs_client import ECSClient
+from shared.exceptions import AWSSkillError, AuthError
+from shared.ecs.ecs_models import CompareResult, EnvVar, EnvVarMismatch, ServiceData
 
 
 class EnvComparer:
