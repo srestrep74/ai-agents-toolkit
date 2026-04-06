@@ -98,6 +98,8 @@ mem_save(
 
 ### Step 7: Return Structured Proposal
 
+**MANDATORY**: You MUST print the full Markdown content of the **Technical Proposal** (the same content you just saved to Engram) to the chat/console. This ensures the developer sees the proposal immediately for review.
+
 Return exactly this format to the orchestrator:
 
 ```markdown

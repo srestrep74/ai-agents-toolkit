@@ -203,6 +203,8 @@ mem_save(
 
 ## Return Envelope
 
+**MANDATORY**: You MUST print the full Markdown content of the **Functional Specification** (the same content you just saved to Engram) to the chat/console. This ensures the developer can review it immediately.
+
 Always return a structured envelope after completing the spec:
 
 ```

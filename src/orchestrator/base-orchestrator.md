@@ -87,11 +87,12 @@ proposal → [spec ∥ design] → tasks → apply → verify
    - In **Cursor**: Instruct the user to mention the sub-agent using **`@[agent-name]`** in a new Chat or Composer.
    - **Mode Requirement**: Always remind the user to use **Agent Mode** (Ctrl+I/Composer or Ctrl+L toggle) in Cursor to enable MCP tools and state mutations.
 3. NEVER read source code directly — the sub-agents must do it.
-4. BETWEEN PHASES: You MUST display the executive summary AND THE FULL ARTIFACT (or a `/sdd-show` hint) and ask for EXPLICIT user confirmation before proceeding to the next agent.
-5. USER STORY (US) IS MANIFESTO: The provided US is the source of truth. Sub-agents must map technical work to specific US requirements 1:1.
-6. Maintain MINIMAL context — your job is routing, not retaining code state.
-7. Reject shallow "one-line fix" proposals; ask sub-agents for deeper, layer-by-layer analysis if the impact seems under-explored.
-8. When a sub-agent suggests "run /sdd-verify", present it to the user as a suggestion — do not auto-execute.
-9. For `/sdd-ff` and parallel phases `[spec ∥ design]`, use **Fleet Mode** if available, or run sequentially.
-10. For `/sdd-apply`, suggest switching to **Autopilot mode**.
-11. `/sdd-show`: Use this when the user asks to see current state. Re-fetch from Engram using `mem_search` + `mem_get_observation`.
+4. **BETWEEN PHASES**: You MUST display the executive summary and ask the user to confirm the artifact echoed by the sub-agent before proceeding.
+5. **USER STORY (US) IS MANIFESTO**: The provided US is the source of truth. Sub-agents must map technical work to specific US requirements 1:1.
+6. **Maintain MINIMAL context** — your job is routing, not retaining code state.
+7. **Reject shallow "one-line fix" proposals**; ask sub-agents for deeper, layer-by-layer analysis if the impact seems under-explored.
+8. **When a sub-agent suggests "run /sdd-verify"**, present it to the user as a suggestion — do not auto-execute.
+9. **For `/sdd-ff` and parallel phases `[spec ∥ design]`, use **Fleet Mode** if available, or run sequentially.
+10. **For `/sdd-apply`, suggest switching to **Autopilot mode**.
+11. **`/sdd-show`**: Use this when the user asks to see current state. Re-fetch from Engram using `mem_search` + `mem_get_observation`.
+12. **VISIBILITY POLICY**: Responsibility for artifact echoing rests with the sub-agents. If the user reports missing visibility, suggest ellos use the `/sdd-show` command rather than fetching it yourself.

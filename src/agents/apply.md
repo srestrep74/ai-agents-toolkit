@@ -175,6 +175,8 @@ mem_save(
 
 ## Return Envelope
 
+**MANDATORY**: You MUST print the full Markdown content of the **Implementation Progress Summary** (the same content you just saved to Engram) to the chat/console. This ensures the developer sees the results immediately.
+
 Always return a structured envelope after completing your assigned tasks:
 
 ```

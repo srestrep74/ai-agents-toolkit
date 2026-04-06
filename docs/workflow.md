@@ -5,9 +5,10 @@ This guide explains how to practically navigate the SDD lifecycle using your fav
 ## 👋 The Human-in-the-Loop Philosophy
 
 In SDD, the AI is NOT a replacement for the engineer. It is a **force multiplier**.
-- **Agent Proposes**: AI analyzes the code and suggests a plan.
-- **Human Authorizes**: You review the proposal, spec, and design.
-- **Agent Executes**: AI handles the bulk of the implementation once authorized.
+- **Sub-Agent Echoes**: After generating an artifact, the sub-agent **immediately prints it in the chat** for you to see.
+- **Human Authorizes**: You review the proposal, spec, or design directly in the chat window. 
+- **Orchestrator Gatekeeps**: The orchestrator asks for your approval before launching the next phase.
+- **Transparent Lifecycle**: No more "black boxes"—you see every piece of work the AI produces in real-time.
 
 ## 🛠️ Essential Commands
 

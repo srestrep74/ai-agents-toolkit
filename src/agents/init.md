@@ -168,6 +168,8 @@ linting strategy, architecture patterns, and where the skill registry lives.
 
 ## Return Envelope
 
+**MANDATORY**: You MUST print the full Markdown content of the **Enriched Skill Registry & Project Context** (the same content you just saved to Engram) to the chat/console. This ensures the developer sees the initialization results immediately.
+
 Always return a structured result using exactly these fields:
 
 ```

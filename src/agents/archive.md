@@ -88,6 +88,8 @@ the project root (only if they were specifically created by sdd-apply).
 
 ## Return Envelope
 
+**MANDATORY**: You MUST print the full Markdown content of the **Final Archive Report** (the same content you just saved to Engram) to the chat/console. This ensures the developer sees the final summary.
+
 Always return a structured envelope:
 
 ```

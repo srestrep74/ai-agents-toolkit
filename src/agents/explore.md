@@ -138,6 +138,8 @@ future phases or sessions may reference it.
 
 ### Step 8: Return Structured Analysis
 
+**MANDATORY**: You MUST print the full Markdown content of the **Exploration Analysis** (the same content you just saved to Engram) to the chat/console. This ensures the developer sees the results immediately without needing a separate command.
+
 Return exactly this format to the orchestrator:
 
 ```markdown
